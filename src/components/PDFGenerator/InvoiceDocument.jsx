@@ -282,8 +282,8 @@ export default function InvoiceDocument({ invoice }) {
             <View key={item.id} style={styles.tableRow}>
               <Text style={[styles.tableCell, styles.colDesc]}>{item.description || '—'}</Text>
               <Text style={[styles.tableCell, styles.colQty]}>{item.quantity}</Text>
-              <Text style={[styles.tableCell, styles.colRate]}>RR{item.rate.toFixed(2)}</Text>
-              <Text style={[styles.tableCell, styles.colAmount]}>RR{(item.quantity * item.rate).toFixed(2)}</Text>
+              <Text style={[styles.tableCell, styles.colRate]}>R{item.rate.toFixed(2)}</Text>
+              <Text style={[styles.tableCell, styles.colAmount]}>R{(item.quantity * item.rate).toFixed(2)}</Text>
             </View>
           ))}
         </View>
@@ -292,24 +292,24 @@ export default function InvoiceDocument({ invoice }) {
         <View style={styles.financials}>
           <View style={styles.financialsBox}>
             <View style={styles.financialRow}>
-              <Text style={styles.financialLabel}>Subtotal</Text>
-              <Text style={styles.financialValue}>RR{financials.subtotal.toFixed(2)}</Text>
+              <Text style={styles.financialLabel}>Subtotal (incl. VAT)</Text>
+              <Text style={styles.financialValue}>R{financials.subtotal.toFixed(2)}</Text>
             </View>
             {financials.taxRate > 0 && (
               <View style={styles.financialRow}>
-                <Text style={styles.financialLabel}>Tax ({financials.taxRate}%)</Text>
-                <Text style={styles.financialValue}>RR{financials.taxAmount.toFixed(2)}</Text>
+                <Text style={styles.financialLabel}>VAT Amount (15%)</Text>
+                <Text style={styles.financialValue}>R{financials.taxAmount.toFixed(2)}</Text>
               </View>
             )}
             {financials.discountRate > 0 && (
               <View style={styles.financialRow}>
                 <Text style={[styles.financialLabel, styles.discount]}>Discount ({financials.discountRate}%)</Text>
-                <Text style={[styles.financialValue, styles.discount]}>RR{financials.discountAmount.toFixed(2)}</Text>
+                <Text style={[styles.financialValue, styles.discount]}>-R{financials.discountAmount.toFixed(2)}</Text>
               </View>
             )}
             <View style={styles.totalRow}>
               <Text style={styles.totalLabel}>Total</Text>
-              <Text style={styles.totalValue}>RR{financials.grandTotal.toFixed(2)}</Text>
+              <Text style={styles.totalValue}>R{financials.grandTotal.toFixed(2)}</Text>
             </View>
           </View>
         </View>

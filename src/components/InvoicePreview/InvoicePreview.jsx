@@ -98,15 +98,13 @@ export default function InvoicePreview() {
         <div className="flex justify-end">
           <div className="w-full sm:w-72 space-y-4">
             <div className="flex justify-between text-gray-600">
-              <span className="font-medium">Subtotal</span>
+              <span className="font-medium">Subtotal (incl. VAT)</span>
               <span className="font-semibold">R{financials.subtotal.toFixed(2)}</span>
             </div>
-            {financials.taxRate > 0 && (
-              <div className="flex justify-between text-gray-600">
-                <span className="font-medium">Tax ({financials.taxRate}%)</span>
-                <span className="font-semibold">R{financials.taxAmount.toFixed(2)}</span>
-              </div>
-            )}
+            <div className="flex justify-between text-xs text-gray-500">
+              <span className="font-medium">VAT Amount (15%)</span>
+              <span className="font-semibold">R{financials.taxAmount.toFixed(2)}</span>
+            </div>
             {financials.discountRate > 0 && (
               <div className="flex justify-between text-green-600">
                 <span className="font-medium">Discount ({financials.discountRate}%)</span>
